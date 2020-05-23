@@ -7,12 +7,12 @@ const {existsSync, readFileSync, writeFileSync} = require("fs");
 
 if(!existsSync("auth.json")) {
     writeFileSync("./auth.json", "{\"token\":\"TOKEN\",\"prefix\":\",\"}");
-    console.log("Please enter your token in auth.json and re-run.");
+    console.log("Please enter your token in auth.json and re-run.\nIf an argument is specified as the first parameter, that will be used as the token instead.");
     process.exit(1);
 }
 
 //get the token from auth.json
-const tkn = (JSON.parse(readFileSync("auth.json"))).token;
+const tkn = process.argv[2] ? process.argv[2] : (JSON.parse(readFileSync("auth.json"))).token;
 const prefix = (JSON.parse(readFileSync("auth.json"))).prefix;
 
 client.on("ready", () => {
