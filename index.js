@@ -6,7 +6,7 @@ const pbip = require("public-ip");
 const {existsSync, readFileSync, writeFileSync} = require("fs");
 
 if(!existsSync("auth.json")) {
-    writeFileSync("./auth.json", "{\n\"token\":\"TOKEN\"\n}");
+    writeFileSync("./auth.json", "{\"token\":\"TOKEN\",\"prefix\":\",\"}");
     console.log("Please enter your token in auth.json and re-run.");
     process.exit(1);
 }
