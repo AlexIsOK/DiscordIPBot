@@ -9,7 +9,7 @@ Get your IP address from a self-hosted Discord bot
 4. Edit the file to include your token (and custom prefix, default is a comma)
 5. Run the bot again: `node index.js`
 
-You can also pass the token as a command line argument: `node index.js TOKEN`.
+You can also pass the token as a command line argument: `node index.js -t TOKEN`.
 The command line token will be used instead of the stored one when possible.
 
 # Contributing

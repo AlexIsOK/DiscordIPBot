@@ -12,7 +12,7 @@ if(!existsSync("auth.json")) {
 }
 
 //get the token from auth.json
-const tkn = process.argv[2] ? process.argv[2] : (JSON.parse(readFileSync("auth.json"))).token;
+const tkn = process.argv[2] === "-t" ? process.argv[3] : (JSON.parse(readFileSync("auth.json"))).token;
 const prefix = (JSON.parse(readFileSync("auth.json"))).prefix;
 
 client.on("ready", () => {
