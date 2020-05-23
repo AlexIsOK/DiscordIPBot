@@ -15,6 +15,10 @@ if(!existsSync("auth.json")) {
 const tkn = (JSON.parse(readFileSync("auth.json"))).token;
 const prefix = (JSON.parse(readFileSync("auth.json"))).prefix;
 
+client.on("ready", () => {
+    console.log("Discord bot: activated!");
+    console.log("Logged in as " + client.user.username);
+});
 
 client.on("message", msg => {
     if(msg.content === prefix + "ip") {
