@@ -11,7 +11,9 @@ if(!existsSync("config.json")) {
         "{\n" +
         "   \"token\": \"TOKEN\",\n" +
         "   \"prefix\":\",\",\n" +
-        "   \"ipv\": \"4\"\n" +
+        "   \"ipv\": \"4\",\n" +
+        "   \"command\": \"ipAddress\",\n" +
+        "   \"caseSensitive\": \"false\"\n" +
         "}" +
         "");
     console.log("Please enter your token in config.json and re-run.\nIf an argument is specified as the first parameter, that will be used as the token instead.");
@@ -19,21 +21,33 @@ if(!existsSync("config.json")) {
 }
 
 //get the token from config.json or a parameter
-const tkn = process.argv[2] === "-t" && process.argv[3] ? process.argv[3] : (JSON.parse(readFileSync("config.json"))).token;
+const tkn = process.argv[2] === "-t" && process.argv[3] ?
+    process.argv[3] :
+    (JSON.parse(readFileSync("config.json"))).token;
 
 //prefix
 const prefix = (JSON.parse(readFileSync("config.json"))).prefix;
 
 //internet protocol version
 const ipv = (JSON.parse(readFileSync("config.json"))).ipv;
+
+//case sensitive command
+const caseSensitive = (JSON.parse(readFileSync("config.json"))).caseSensitive;
+
+//command
+const cmd = caseSensitive === true || caseSensitive === "true" ?
+    (JSON.parse(readFileSync("config.json"))).command :
+    (JSON.parse(readFileSync("config.json"))).toString().toLowerCase();
+
 client.on("ready", () => {
     console.log("Discord bot: activated!");
     console.log("Logged in as " + client.user.username);
 });
 
-//if the ipv element exists
-if(!ipv) {
-    console.error("Error: could not get the Internet Protocol version from config.json.\nIf that element was removed, you can delete the config file and run this" +
+//Check to make sure that the required elements are here
+//prefix is not required.
+if(!ipv || !cmd || !tkn) {
+    console.error("Error: one or more elements could not be found in the config.json file.  If you have upgraded, please delete the config and run the program" +
         " again to generate a new one.");
     process.exit(2);
 }
@@ -46,7 +60,10 @@ if(!(ipv === "4" || ipv === "6")) {
 
 //Only the IP message should be read.
 client.on("message", msg => {
-    if(msg.content === prefix + "ip") {
+    if(caseSensitive === "true" || caseSensitive === true) {
+        msg.content = msg.content.toLowerCase()
+    }
+    if(msg.content === prefix + cmd) {
         
         //ipv4
         if(ipv === "4")
