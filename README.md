@@ -5,7 +5,7 @@ Get your IP address from a self-hosted Discord bot
 
 1. Clone the repository: `git clone https://github.com/AlexIsOK/DiscordIPBot` and cd `cd DiscordIPBot`
 2. Install the dependencies: `npm install`
-3. Run the bot to generate an auth file: `node index.js`
+3. Run the bot to generate a config file: `node index.js`
 4. Edit the file to include your token (and custom prefix, default is a comma)
 5. Run the bot again: `node index.js`
 
