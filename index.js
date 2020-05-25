@@ -5,6 +5,9 @@ const pbip = require("public-ip");
 
 const {existsSync, readFileSync, writeFileSync} = require("fs");
 
+//testing
+const test = process.argv[2] === "--test";
+
 //check to see if the config file exists
 if(!existsSync("config.json")) {
     writeFileSync("./config.json", "" +
@@ -58,6 +61,10 @@ if(!(ipv === "4" || ipv === "6")) {
     process.exit(3);
 }
 
+//nothing left for testing
+if(test)
+    process.exit(0);
+
 //Only the IP message should be read.
 client.on("message", msg => {
     if(caseSensitive === "true" || caseSensitive === true) {
@@ -80,4 +87,4 @@ client.on("message", msg => {
 });
 
 //finally, login to Discord
-client.login(tkn);
+client.login(tkn).then(r => console.log(r));
