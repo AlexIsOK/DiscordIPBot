@@ -87,4 +87,5 @@ client.on("message", msg => {
 });
 
 //finally, login to Discord
-client.login(tkn).then(r => console.log(r));
+//do NOT log the result, users token will be displayed in plain text.
+client.login(tkn).then();
