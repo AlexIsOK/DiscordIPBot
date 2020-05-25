@@ -19,8 +19,10 @@ if(!existsSync("config.json")) {
         "   \"caseSensitive\": \"false\"\n" +
         "}" +
         "");
-    console.log("Please enter your token in config.json and re-run.\nIf an argument is specified as the first parameter, that will be used as the token instead.");
-    process.exit(1);
+    if(!test) {
+        console.log("Please enter your token in config.json and re-run.\nIf an argument is specified as the first parameter, that will be used as the token instead.");
+        process.exit(1);
+    }
 }
 
 //get the token from config.json or a parameter
