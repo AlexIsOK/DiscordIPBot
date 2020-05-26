@@ -1,6 +1,7 @@
 # DiscordIPBot
 <div id="npmStats"><a href="https://npmjs.org/package/discordipbot"><img src="https://badgen.now.sh/npm/v/discordipbot" alt="version" /></a>
-<a href="https://npmjs.org/package/discordipbot"><img src="https://badgen.now.sh/npm/dm/discordipbot" alt="downloads" /></a></div>
+<a href="https://npmjs.org/package/discordipbot"><img src="https://badgen.now.sh/npm/dm/discordipbot" alt="downloads" /></a>
+<a href="https://npmjs.org/package/discordipbot"><img src="https://badgen.now.sh/npm/dd/discordipbot" alt="downloads" /></a></div>
 
 Get your IP address from a self-hosted Discord bot
 
